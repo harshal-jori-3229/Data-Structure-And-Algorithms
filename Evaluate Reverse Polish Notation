@@ -1,0 +1,21 @@
+var evalRPN = function(tokens) {
+    let n = tokens.length;
+    let stack = [];
+    const validOperators = ['+', '-', '*', '/'];
+    for(let ch of tokens){
+        if(!validOperators.includes(ch)){
+            stack.push(Number(ch));
+        }
+        else{
+            let b = stack.pop();
+            let a = stack.pop();
+            let result;
+            if(ch === "+") result = a + b;
+            else if(ch === "-") result = a - b;
+            else if(ch === "*") result = a * b;
+            else if(ch === "/") result = Math.trunc(a / b);
+            stack.push(result);
+        }
+    }
+    return stack[0];
+};
