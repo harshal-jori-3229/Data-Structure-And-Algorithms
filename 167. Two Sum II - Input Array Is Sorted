@@ -1,0 +1,19 @@
+var twoSum = function(nums, target) {
+     let n = nums.length;
+     let leftpointer = 0;
+     let rightpointer = n-1;
+
+     while(leftpointer < rightpointer){
+          let sum = nums[leftpointer] + nums[rightpointer];
+
+          if(sum === target){
+               return [leftpointer+1, rightpointer+1];
+               leftpointer++;
+               rightpointer--;
+          }else if(sum < target){
+               leftpointer++;
+          }else{
+               rightpointer--;
+          }
+     }
+};
