@@ -1,0 +1,19 @@
+var subarraySum = function(nums, k) {
+  let n = nums.length;
+  let frequencymap = new Map();
+  frequencymap.set(0,1);
+  let prefixsum = 0;
+  let subarraysumequalsk = 0;
+
+  for(let i=0; i<n; i++ ){
+    prefixsum += nums[i];
+
+    if(frequencymap.has(prefixsum - k)){
+        subarraysumequalsk += frequencymap.get(prefixsum - k);
+    }
+
+    frequencymap.set(prefixsum, (frequencymap.get(prefixsum)||0)+1);
+    
+  }
+  return subarraysumequalsk
+};
