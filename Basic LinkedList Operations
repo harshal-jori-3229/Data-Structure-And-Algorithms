@@ -1,0 +1,98 @@
+
+class Node{
+    constructor(value){
+        this.value = value;
+        this.next = null;
+    }
+}
+
+class LinkedList{
+    constructor(){
+        this.head = null;
+        this.tail = null;
+    }
+    pushFront(value){
+        let newnode = new Node(value);
+        
+        if(!this.head){
+           this.head = this.tail = newnode;
+            return;
+        }else{
+            newnode.next = this.head;
+            this.head = newnode;
+        }
+    }
+   
+    pushBack(value){
+        let newnode = new Node(value);
+        if(!this.head){
+            this.head = this.tail = newnode;
+            return;
+        }
+        this.tail.next = newnode;
+        this.tail = newnode;
+    }
+     popFront(){
+        if(this.head == null){
+            console.log("list is empty")
+            return;
+        }
+        let temp = this.head;
+        this.head = this.head.next;
+        temp.next = null;
+        if(this.head == null)this.tail = null;
+       
+    }
+    popBack(){
+        if(this.head == null){
+            console.log("list is empty")
+            return;
+        }
+        if (this.head === this.tail) {
+            // ✅ Only one node case
+            this.head = this.tail = null;
+            return;
+        }
+        let temp = this.head;
+        while(temp.next !== this.tail){
+            temp = temp.next;
+        }
+        temp.next = null;
+        this.tail = temp;
+    }
+    
+    printList() {
+        let current = this.head;
+        let result = "";
+        while (current !== null) {
+            result += current.value + " -> ";
+            current = current.next;
+        }
+        result += "null";
+        console.log(result);
+    }
+}
+
+
+const mylist = new LinkedList();
+mylist.pushFront(10);
+mylist.pushFront(20);
+mylist.pushFront(30);
+mylist.pushBack(30);
+mylist.pushBack(40);
+
+
+console.log("Initial Linked List:");
+mylist.printList();
+
+
+mylist.popFront();
+console.log("After popFront:");
+mylist.printList();
+
+
+mylist.popBack();
+console.log("After popBack:");
+mylist.printList();
+
+
