@@ -61,6 +61,40 @@ class LinkedList{
         this.tail = temp;
     }
     
+    insert(value, pos) {
+        if(pos < 0){
+            console.log("invalid position")
+            return;
+        }
+        if(pos === 0){
+            pushFront(value);
+            return;
+        }
+        
+        let temp = this.head;
+        for(let i=0; i<pos-1; i++){
+             if (temp == null) {
+                console.log("Invalid position: out of bounds");
+                return;
+            }
+            temp = temp.next;
+        }
+        
+        if(temp === null){
+             console.log("Invalid position: out of bounds");
+                return;
+        }
+        
+        let newnode = new Node(value);
+        
+        newnode.next = temp.next;
+        temp.next = newnode;
+        
+        if(newnode.next == null){
+            this.tail = newnode;
+        }
+    }
+    
     printList() {
         let current = this.head;
         let result = "";
@@ -94,5 +128,17 @@ mylist.printList();
 mylist.popBack();
 console.log("After popBack:");
 mylist.printList();
+
+
+console.log("After inserting")
+mylist.insert(25, 2);  // Insert 25 after 2nd node
+mylist.printList();
+
+
+
+
+
+
+
 
 
