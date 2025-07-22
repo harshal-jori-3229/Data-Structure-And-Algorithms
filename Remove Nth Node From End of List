@@ -1,0 +1,55 @@
+class Node{
+    constructor(value){
+        this.value = value;
+        this.next = null;
+    }
+}
+
+function createLinkedList(arr, n){
+    let head = new Node(arr[0]);
+    let current = head;
+    for(i=1; i<arr.length; i++){
+        current.next = new Node(arr[i]);
+        current = current.next;
+    }
+    return head;
+}
+function printLinkedList(head){
+    let result = [];
+    while(head !== null){
+        result.push(head.value);
+        head = head.next;
+    }
+    console.log(result.join('->'));
+}
+
+var removeNthFromEnd = function(head, n) {
+    let dummy = new Node(0);
+    dummy.next = head;
+    let fast = dummy;
+    let slow = dummy;
+    
+    for(i=0; i<=n; i++){
+        fast = fast.next;
+    }
+    
+    while(fast !== null){
+        fast = fast.next;
+        slow = slow.next;
+    }
+    slow.next = slow.next.next;
+    return dummy.next;
+};
+
+
+
+let input = createLinkedList([1,2,3,4,5]);
+
+console.log("Created linked List");
+printLinkedList(input);
+
+let newlist = removeNthFromEnd(input, 2)
+
+console.log("delete specific no List:");
+printLinkedList(newlist);
+
