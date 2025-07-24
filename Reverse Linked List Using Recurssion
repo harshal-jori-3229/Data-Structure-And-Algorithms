@@ -1,0 +1,57 @@
+class Node{
+    constructor(value){
+        this.value = value;
+        this.next = null;
+    }
+}
+
+
+
+function createLinkedList(arr){
+    let head = new Node(arr[0]);
+    let current = head;
+    for(i=1; i<arr.length; i++){
+        let newnode = new Node(arr[i]);
+        current.next = newnode;
+        current = newnode;
+    }
+    return head;
+}
+
+function printLinkedlist(head){
+    let result = []
+    while(head !== null){
+        result.push(head.value + "->");
+        head = head.next;
+    }
+    result += null;
+    console.log(result)
+}
+
+function reversedcinar(head){
+    let prev = null;
+    let curr = head;
+    let next = null;
+    while(curr !== null){
+        next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+    return prev;
+}
+
+function reversedLinkedList(head){
+    let save = head;
+    return reversedcinar(save);
+}
+
+console.log("Normal Linked list")
+let input = createLinkedList([1,2,3,4,5]);
+printLinkedlist(input);
+
+
+console.log("Reversed Linked list")
+let reversed = reversedLinkedList(input);
+printLinkedlist(reversed);
+
