@@ -1,0 +1,9 @@
+var getDecimalValue = function(head) {
+    let current = head;
+    let str = "";
+    while(current !== null){
+        str += current.val;
+        current = current.next;
+    }
+    return parseInt(str, 2);
+};
