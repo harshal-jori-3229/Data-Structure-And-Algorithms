@@ -1,0 +1,25 @@
+function minimizeDifference(A, B, C) {
+    let i = 0, j = 0, k = 0;
+    let minDiff = Infinity;
+
+    while (i < A.length && j < B.length && k < C.length) {
+        let a = A[i], b = B[j], c = C[k];
+        let currentMax = Math.max(a, b, c);
+        let currentMin = Math.min(a, b, c);
+        let diff = currentMax - currentMin;
+
+        // Update minimum difference
+        minDiff = Math.min(minDiff, diff);
+
+        // Move the pointer with the minimum value
+        if (currentMin === a) {
+            i++;
+        } else if (currentMin === b) {
+            j++;
+        } else {
+            k++;
+        }
+    }
+
+    return minDiff;
+}
