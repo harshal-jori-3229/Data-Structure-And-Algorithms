@@ -1,0 +1,20 @@
+var maxSubArray = function(nums) {
+     let n = nums.length
+   let prefixsum = 0;
+   let maxlength = 0;
+   let map = new Map();
+   for(i=0; i<n; i++){
+       prefixsum+= nums[i];
+       
+       if(prefixsum === 0){
+           maxlength = i + 1;
+       }
+       
+       if(map.has(prefixsum)){
+           maxlength =  Math.max(maxlength, i - map.get(prefixsum));
+       }else{
+           map.set(prefixsum, i);
+       }
+   }
+   return maxlength;
+};
