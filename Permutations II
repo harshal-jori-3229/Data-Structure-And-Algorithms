@@ -1,0 +1,30 @@
+var permuteUnique = function(nums) {
+    let ans = [];
+    nums.sort((a, b) => a - b);
+    let visited = new Array(nums.length).fill(false);
+    function helper(used){
+
+        for(let i = 0; i<nums.length; i++){
+
+            if(used.length === nums.length){
+                ans.push([...used]);
+                return
+            }
+
+            if(visited[i])continue;
+
+            if(i>0 && nums[i] === nums[i-1] && !visited[i-1]){
+                continue;
+            }else{
+                visited[i] = true;
+                used.push(nums[i]);
+                helper(used);
+                used.pop();
+                visited[i] = false;
+            }
+        }
+
+    }
+    helper([]);
+    return ans;
+};
