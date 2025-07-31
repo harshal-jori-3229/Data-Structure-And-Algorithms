@@ -1,0 +1,23 @@
+var subsets = function(nums) {
+    
+    let ans = [];
+
+    function helper(idx, current){
+
+        if(idx === nums.length){
+            ans.push([...current]);
+            return;
+        }
+        
+        //include choice 
+        current.push(nums[idx]);
+        helper(idx+1, current);
+
+        //exclude choice
+        current.pop();
+        helper(idx+1, current);
+
+    }
+    helper(0, []);
+    return ans;
+};
