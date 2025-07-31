@@ -1,0 +1,25 @@
+var subsetsWithDup = function(nums) {
+    nums.sort((a, b) => a - b); // Sort to handle duplicates
+    let ans = [];
+    
+    function helper(startindex, currentsubset) {
+
+        ans.push([...currentsubset]);
+
+        for(let i=startindex; i<nums.length; i++){
+            if(i > startindex && nums[i] === nums[i-1]){
+                continue;
+            }
+
+            currentsubset.push(nums[i]);
+            helper(i+1, currentsubset);
+            currentsubset.pop();
+           
+        }
+
+        
+    }
+
+    helper(0, []);
+    return ans;
+};
