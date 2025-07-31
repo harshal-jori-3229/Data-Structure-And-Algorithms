@@ -1,0 +1,22 @@
+var permute = function(nums) {
+    let ans = [];
+
+    function helper(usedset, usedarr){
+        if(nums.length === usedarr.length){
+            ans.push([...usedarr]);
+            return
+        }
+
+        for(let i=0; i<nums.length; i++){
+            if(!usedset.has(nums[i])){
+                usedset.add(nums[i]);
+                usedarr.push(nums[i]);
+                helper(usedset, usedarr);
+                usedarr.pop();
+                usedset.delete(nums[i]);
+            }
+        }
+    }
+    helper(new Set(), []);
+    return ans;
+};
