@@ -1,0 +1,25 @@
+var combinationSum2 = function(candidates, target) {
+    candidates.sort((a,b)=> a - b);
+    let result = [];
+
+    function helper(startindex, target, currentarray){
+
+        if(target === 0){
+            result.push([...currentarray]);
+            return;
+        }
+
+        for(let i=startindex; i<candidates.length; i++){
+            if(i>startindex && candidates[i] === candidates[i-1]){
+                continue;
+            }
+            if(candidates[i] > target)break;
+
+            currentarray.push(candidates[i]);
+            helper(i+1, target - candidates[i], currentarray);
+            currentarray.pop();
+        }
+    }
+    helper(0, target, []);
+    return result;
+};
