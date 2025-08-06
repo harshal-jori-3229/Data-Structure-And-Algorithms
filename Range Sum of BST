@@ -1,0 +1,24 @@
+var rangeSumBST = function(root, low, high) {
+    let sorted = inorder(root);
+    let ans = 0;
+
+    for(i=0; i<sorted.length; i++){
+        if(sorted[i]>= low && sorted[i] <= high){
+            ans += sorted[i];
+        }
+    }
+    return ans;
+};
+
+function inorder(root){
+    let result = [];
+    function dfs(node){
+        if(!node)return null;
+
+        dfs(node.left);
+        result.push(node.val);
+        dfs(node.right);
+    }
+    dfs(root);
+    return result;
+}
