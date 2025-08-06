@@ -1,0 +1,36 @@
+function inorder(root){  
+    let result = [];
+    function dfs(node){
+        if(!node)return null;
+        dfs(node.left);
+        result.push(node.val);
+        dfs(node.right);
+    }
+    dfs(root);
+    return result;
+}
+
+
+var solve = function (root1,root2) {
+    let result1 = inorder(root1);
+    let result2 = inorder(root2);
+
+    let temp = [];
+    let i = 0, j = 0;
+    while(i < result1.length && j < result2.length){
+        if(result1[i]<result2[j]){
+            temp.push(result1[i++]);
+        }else if(result2[j]< result1[i]){
+            temp.push(result2[j++]);
+        }else{
+            temp.push(result1[i]);
+            temp.push(result2[j]);
+            i++;
+            j++;
+        }
+    }
+    while(i<result1.length)temp.push(result1[i]);
+    while(j<result2.length)temp.push(result2[j]);
+
+    return temp;
+};
