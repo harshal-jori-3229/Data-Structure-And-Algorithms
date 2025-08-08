@@ -1,0 +1,26 @@
+var buildTree = function(preorder, inorder) {
+   let preIdx = 0;
+   function helper(left, right){
+    if(left > right)return null;
+
+    let root = new TreeNode(preorder[preIdx]);
+    let inorderIdx = searchIdx(inorder, left, right, preorder[preIdx])
+    preIdx++;
+
+    root.left = helper(left, inorderIdx-1);
+    root.right = helper(inorderIdx+1, right);
+
+    return root;
+    
+   }
+   return helper(0, inorder.length-1);
+};
+
+function searchIdx(inorder, left, right, searchVal){
+   for(i=left; i<=right; i++){
+    if(inorder[i] == searchVal){
+        return i
+    }
+   }
+   return -1;
+}
