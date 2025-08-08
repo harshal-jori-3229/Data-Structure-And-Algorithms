@@ -1,0 +1,19 @@
+var sumNumbers = function(root) {
+    let ans = 0;
+
+    function helper(node, currNumber){
+       if(!node)return;
+
+        currNumber = currNumber * 10 + node.val;
+        if(!node.left && !node.right){
+            ans += currNumber;
+            return;
+        }
+
+        helper(node.left, currNumber);
+        helper(node.right, currNumber);
+
+    }
+    helper(root, 0);
+    return ans;
+};
