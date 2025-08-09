@@ -1,0 +1,19 @@
+var pathSum = function(root, targetSum) {
+   let result = [];
+
+   function dfs(node, path, sum){
+        if(!node)return
+
+        path.push(node.val);
+
+        if(!node.left && !node.right && sum == node.val){
+            result.push([...path])
+        }else{
+            dfs(node.left, path, sum - node.val);
+            dfs(node.right, path, sum - node.val)
+        }
+        path.pop();
+   }
+   dfs(root, [], targetSum)
+    return result;
+};
