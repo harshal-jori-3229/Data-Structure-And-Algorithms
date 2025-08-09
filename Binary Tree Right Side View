@@ -1,19 +1,19 @@
 var rightSideView = function(root) {
-    if(!root)return [];
-    let queue = [root];
-    let result = [];
-
-    while(queue.length > 0){
+   if(!root)return[];
+   let queue = [root];
+   let result = [];
+   while(queue.length > 0){
         let levelsize = queue.length;
-        let rightmost = null;
-        for(i=0; i<levelsize; i++){
+        for(i=0; i< levelsize; i++){
             let node = queue.shift();
-            rightmost = node;
 
-            if (node.left) queue.push(node.left);
-            if (node.right) queue.push(node.right);
+            if(i == levelsize - 1){
+                result.push(node.val);
+            }
+
+            if(node.left)queue.push(node.left);
+            if(node.right)queue.push(node.right);
         }
-        result.push(rightmost.val); 
-    }
-    return result;
+   }
+   return result ;
 };
