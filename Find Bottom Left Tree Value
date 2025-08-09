@@ -1,0 +1,21 @@
+var findBottomLeftValue = function(root) {
+
+    if(!root)return null;
+
+    let queue = [root];
+    let leftmostVal = root.val
+
+    while(queue.length > 0){
+        let levelsize = queue.length;
+        for(i=0; i<levelsize; i++){
+            let node = queue.shift();
+
+            if(i==0){
+                leftmostVal = node.val;
+            }
+            if(node.left)queue.push(node.left);
+            if(node.right)queue.push(node.right);
+        }
+    }
+    return leftmostVal;
+};
