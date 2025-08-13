@@ -1,0 +1,44 @@
+class Node{
+     constructor() {
+         this.children = new Array(26).fill(null);
+         this.flag = false;
+     }
+}
+
+const root = new Node();
+const words = ["the", "a", "there", "their", "any"];
+
+function inserTries(word){
+    let current = root;
+    
+    for(let i=0; i<word.length; i++){
+        let index = word.charCodeAt(i) - 97;
+        
+        if(!current.children[index]){
+            current.children[index] = new Node();
+        }
+        
+        current = current.children[index];
+    }
+    current.flag = true;
+}
+
+function search(key){
+    let current = root;
+    for(let i=0; i < key.length; i++){
+        let index = key.charCodeAt(i) - 97;
+        if(!current.children[index]){
+            return false;
+        }
+        current = current.children[index]
+    }
+    return current.flag;
+}
+
+for(word of words){
+    inserTries(word);
+}
+
+console.log(search("their"))
+console.log("-------------------------------------------------")
+console.log(root);
