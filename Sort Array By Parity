@@ -1,0 +1,15 @@
+var sortArrayByParity = function(nums) {
+     let i = 0, j = nums.length - 1;
+
+    while (i < j) {
+        if (nums[i] % 2 > nums[j] % 2) {
+            // Swap odd at i with even at j
+            [nums[i], nums[j]] = [nums[j], nums[i]];
+        }
+
+        if (nums[i] % 2 === 0) i++; // even is okay
+        if (nums[j] % 2 === 1) j--; // odd is okay
+    }
+
+    return nums;
+};
