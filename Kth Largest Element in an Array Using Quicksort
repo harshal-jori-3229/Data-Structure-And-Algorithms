@@ -1,0 +1,25 @@
+var findKthLargest = function(nums, k) {
+    let n = nums.length;
+    return quickSelect(nums, 0, n - 1, n - k);
+};
+
+function quickSelect(nums, left, right, index) {
+    let pivot = partition(nums, left, right);
+
+    if (pivot === index) return nums[pivot];
+    else if (pivot < index) return quickSelect(nums, pivot + 1, right, index);
+    else return quickSelect(nums, left, pivot - 1, index);
+}
+
+function partition(nums, left, right) {
+    let pivot = nums[right];
+    let i = left;
+    for (let j = left; j < right; j++) {
+        if (nums[j] <= pivot) {
+            [nums[i], nums[j]] = [nums[j], nums[i]];
+            i++;
+        }
+    }
+    [nums[i], nums[right]] = [nums[right], nums[i]];
+    return i;
+}
