@@ -1,0 +1,29 @@
+function minCost(arr){
+    let pq = []; // declare priority queue
+    let n = arr.length;
+    
+    for(let i=0; i<n; i++){
+        pq.push(arr[i]);
+    }
+    
+    pq.sort((a,b)=> a - b);
+    
+    let cost = 0;
+    while(pq.length > 1){
+        let firstrope = pq.shift();
+        let secondrope = pq.shift();
+        let totalrope = firstrope + secondrope;
+        
+        cost +=  totalrope;
+        
+        pq.push(totalrope);
+         pq.sort((a,b)=> a - b);
+    }
+    
+    return cost;
+}
+
+// Example test cases
+console.log(minCost([4, 3, 2, 6])); // 29
+console.log(minCost([1, 2, 5, 10, 35, 89])); // 224
+console.log(minCost([2, 2, 3, 3])); 
