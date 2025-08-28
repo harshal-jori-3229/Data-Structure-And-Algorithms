@@ -1,0 +1,13 @@
+var solve = function (mice, holes) {
+    mice.sort((a,b)=> a - b);
+    holes.sort((a,b)=> a - b);
+
+    let maxTime = 0;
+
+    for(let i = 0; i<mice.length; i++){
+      let time = Math.abs(mice[i] - holes[i]);
+
+      maxTime = Math.max(maxTime, time);
+    }
+    return maxTime;
+};
