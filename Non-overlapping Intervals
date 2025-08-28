@@ -1,0 +1,20 @@
+var eraseOverlapIntervals = function(intervals) {
+
+     // Step 1: sort by end time
+    intervals.sort((a, b) => a[1] - b[1]);
+
+    let count = 0;            // number of intervals removed
+    let lastEnd = -Infinity;  // track end of last kept interval
+
+    for (let [start, end] of intervals) {
+        if (start >= lastEnd) {
+            // no overlap → keep it
+            lastEnd = end;
+        } else {
+            // overlap → remove this one
+            count++;
+        }
+    }
+
+    return count;
+};
