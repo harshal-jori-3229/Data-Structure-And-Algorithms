@@ -1,0 +1,22 @@
+
+function fiboMemoHelper(n, dp){
+    // Base case
+    if(n === 0 || n === 1){
+        return n;
+    }
+    
+     // If already calculated, return from dp
+    if(dp[n] != -1){
+        return dp[n]
+    }
+    
+    dp[n] = fiboMemoHelper(n-1, dp) + fiboMemoHelper(n-2, dp);
+    return dp[n];
+}
+
+function fiboMemoization(n) {
+    const dp = new Array(n+1).fill(-1);
+    return fiboMemoHelper(n, dp);
+}
+
+console.log(fiboMemoization(10)); 
