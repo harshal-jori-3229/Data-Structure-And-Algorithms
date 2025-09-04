@@ -1,0 +1,16 @@
+var solve = function (p) {
+
+    if (p === 0) return 0; // no people → no arrangement
+    if (p === 1) return 1; // only one person, must stay single
+    if (p === 2) return 2;
+   
+    let dp = new Array(p+1).fill(0);
+
+    dp[1] = 1;
+    dp[2] = 2;
+   
+    for(let i=3; i<=p; i++){
+      dp[i] = dp[i-1] + (i-1)*dp[i-2];
+    }
+    return dp[p];
+};
