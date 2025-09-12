@@ -1,0 +1,8 @@
+var solve = function (nums) {
+     nums.sort((a,b)=> a-b);
+    let largest = nums[nums.length-1];
+    let secondlargest = nums[nums.length-2];
+    let ans = (largest -1) * (secondlargest - 1);
+    return ans;
+};
+
