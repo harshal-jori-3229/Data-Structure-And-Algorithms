@@ -1,0 +1,17 @@
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var leftRightDifference = function(nums) {
+     let totalSum = nums.reduce((a, b) => a + b, 0);
+   let leftsum = 0;
+   let ans = [];
+   
+   for(let i=0; i<nums.length; i++){
+       let rightsum = totalSum - leftsum - nums[i];
+       ans.push(Math.abs(leftsum - rightsum));
+       leftsum += nums[i];
+   }
+   
+   return ans;
+};
