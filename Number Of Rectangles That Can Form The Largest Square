@@ -1,0 +1,17 @@
+var countGoodRectangles = function(rectangles) {
+    let result = [];
+    let minvalue = 0;
+    let count  = 0;
+    for(let i = 0; i<rectangles.length; i++){
+        minvalue = Math.min(...rectangles[i]);
+        result.push(minvalue);
+    }
+    let largest = Math.max(...result);
+    let frequency = 0;
+    for(i=0; i<result.length; i++){
+        if(result[i] == largest){
+            count++;
+        }
+    }
+    return count;
+};
