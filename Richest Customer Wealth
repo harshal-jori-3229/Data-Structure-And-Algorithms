@@ -1,0 +1,13 @@
+var maximumWealth = function(accounts) {
+    let m = accounts.length;
+    let n = accounts[0].length;
+    let maxval = 0;
+    for(let i = 0; i<m; i++){
+        let currentval = 0;
+        for(let j = 0; j<n; j++){
+            currentval += accounts[i][j];
+        }
+        maxval = Math.max(currentval, maxval)
+    }
+    return maxval;
+};
