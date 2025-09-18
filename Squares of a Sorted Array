@@ -1,0 +1,10 @@
+var sortedSquares = function(nums) {
+     let n = nums.length;
+    let ans  = [];
+    for(let i = 0; i<n; i++){
+        let square = nums[i]* nums[i];
+        ans.push(square);
+    }
+    ans.sort((a,b) => a - b);
+    return ans;
+};
