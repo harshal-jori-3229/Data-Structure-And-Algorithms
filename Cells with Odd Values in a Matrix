@@ -1,0 +1,24 @@
+var oddCells = function(m, n, indices) {
+    let array = new Array(m).fill(0).map(()=> new Array(n).fill(0));
+    let count = 0;
+
+    for(let [row, col] of indices){
+
+        for(let j = 0; j<n; j++){
+            array[row][j]++;
+
+        }
+        for(let i=0; i<m; i++){
+            array[i][col]++;
+        }
+    }
+
+    for(let i = 0; i<array.length; i++){
+        for(let j = 0; j<array[0].length; j++){
+            if(array[i][j] % 2 !== 0){
+                count++;
+            }
+        }
+    }
+    return count;
+};
