@@ -1,0 +1,13 @@
+var transpose = function(matrix) {
+    let m = matrix.length;
+    let n = matrix[0].length;
+    let ans = []
+    for(let j = 0; j<n; j++){
+        let current = [];
+        for(let i = 0; i<m; i++){
+            current.push(matrix[i][j]);
+        }
+        ans.push(current);
+    }
+    return ans;
+};
