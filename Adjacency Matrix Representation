@@ -1,0 +1,28 @@
+class Graph {
+    constructor(size, isDirected=false){
+        this.size = size;
+        this.isDirected = isDirected;
+        this.matrix = Array.from({length:size}, ()=> Array(size).fill(0));
+    }
+    
+    addEdge(u, v, weight=1){
+        this.matrix[u][v] = 1;
+        if(!this.isDirected){
+            this.matrix[u][v] = weight;
+        }
+    }
+    
+    print(){
+        console.log("Adjecency matrix")
+        for(let row of this.matrix){
+            console.log(row.join(" "));
+        }
+    }
+}
+
+let g = new Graph(3); 
+
+g.addEdge(0, 1);       // edge 0-1
+g.addEdge(1, 2); 
+
+g.print();
