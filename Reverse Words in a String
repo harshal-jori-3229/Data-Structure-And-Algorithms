@@ -1,0 +1,28 @@
+var reverseWords = function(s) {
+    let n = s.length;
+    let words = [];
+    let i=0;
+
+    while(i<n){
+
+        while(i<n && s[i] == ' ')i++;
+
+        if(i>=n)break;
+
+        let word = '';
+        while(i<n && s[i] !== ' '){
+            word+= s[i];
+            i++;
+        }
+
+        words.push(word);
+    }
+
+    // Reverse the words manually
+    let result = '';
+    for(let j = words.length - 1; j >= 0; j--){
+        result += words[j];
+        if(j!=0) result += ' ';
+    }
+     return result;
+};
