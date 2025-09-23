@@ -1,0 +1,20 @@
+var isCircularSentence = function(sentence ) {
+    let words =  sentence.split(" ");
+
+    for(let i=0; i<words.length-1; i++){
+        let lastchar = words[i][words[i].length-1];
+        let firstchar = words[i+1][0];
+        if(lastchar !== firstchar){
+            return false;
+        }
+    }
+
+    let n = words.length;
+
+    let lastwordlastchar = words[n-1][words[n-1].length-1];
+    let firstwordfirstchar = words[0][0];
+
+    if(lastwordlastchar !== firstwordfirstchar)return false;
+
+    return true; 
+};
