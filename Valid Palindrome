@@ -1,0 +1,11 @@
+var isPalindrome = function(s) {
+     // 1. Convert to lowercase and remove non-alphanumeric characters
+
+    let cleaned = s.toLowerCase().replace(/[^a-z0-9]/g, '');
+    
+    // 2. Reverse the cleaned string
+    let reversed = cleaned.split('').reverse().join('');
+    
+    // 3. Check if cleaned string is same as reversed
+    return cleaned === reversed;
+};
