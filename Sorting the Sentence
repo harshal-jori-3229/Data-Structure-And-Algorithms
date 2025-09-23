@@ -1,0 +1,14 @@
+var sortSentence = function(s) {
+    let words = s.split(" ");
+    let temp = [];
+    for(let i=0; i<words.length; i++){
+        temp.push(words[i].split("").reverse())
+    }
+    temp.sort();
+    let result = [];
+    for(let j=0; j<temp.length; j++){
+        result.push(temp[j].slice(1).reverse().join(""));
+    }
+    return result.join(" ")
+
+};
