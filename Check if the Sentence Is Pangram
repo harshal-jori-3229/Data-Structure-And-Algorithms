@@ -1,0 +1,10 @@
+var checkIfPangram = function(sentence) {
+    let str = sentence.toLowerCase();
+    let panagram = new Set();
+    for(let word of str){
+        if(word >= 'a' && word <= 'z'){
+            panagram.add(word);
+        }
+    }
+    return panagram.size === 26;
+};
