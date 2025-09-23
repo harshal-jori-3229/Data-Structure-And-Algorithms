@@ -1,0 +1,16 @@
+var similarPairs = function(words) {
+    let count = 0;
+    let n = words.length;
+
+    for(let i=0; i<n; i++){
+        for(let j=i+1; j<n; j++){
+            let set1 = new Set(words[i]);
+            let set2 = new Set(words[j]);
+            
+            if (set1.size === set2.size && [...set1].every(char => set2.has(char))) {
+                count++;
+            }
+        }
+    }
+    return count
+};
