@@ -1,0 +1,14 @@
+var pivotInteger = function(n) {
+    let totalSum = (n * (n + 1)) / 2; // sum of 1 to n
+    let leftSum = 0;
+
+    for (let x = 1; x <= n; x++) {
+        leftSum += x;
+        let rightSum = totalSum - leftSum + x; // include x in both sums
+        if (leftSum === rightSum) {
+            return x;
+        }
+    }
+
+    return -1;
+};
