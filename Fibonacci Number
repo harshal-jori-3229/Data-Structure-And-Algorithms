@@ -1,0 +1,10 @@
+var fib = function(n) {
+    if(n == 0 || n == 1){
+        return n;
+    }
+
+    let firstprev = fib(n-1);
+    let secondprev = fib(n-2);
+
+    return  firstprev + secondprev;
+};
