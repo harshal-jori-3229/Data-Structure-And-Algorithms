@@ -1,0 +1,22 @@
+var fib = function(n, arr=null) {
+
+    if(!arr){
+        arr = new Array(n+1).fill(-1);
+    }
+
+    if(n==0 || n==1){
+        return n
+    }
+
+    if(arr[n] != -1){
+        return arr[n]
+    }
+
+
+    let firstprev = fib(n-1, arr);
+    let secondprev = fib(n-2, arr);
+
+    arr[n] = firstprev + secondprev;
+
+    return  arr[n]
+};
