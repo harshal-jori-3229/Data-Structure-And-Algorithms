@@ -1,0 +1,27 @@
+class Solution {
+    findMissingRepeatingNumbers(nums) {
+        let n = nums.length;
+        nums.sort((a,b) => a - b);
+        let repeating = -1;
+        let missing = -1;
+
+        // find repeating
+        for(let i=0; i<n; i++){
+            if(nums[i] == nums[i+1]){
+                repeating = nums[i];
+                break;
+            }
+        }
+
+        // find missing
+        let expected = 1;
+        for(let i=0; i<n; i++){
+            if(nums[i] === expected){
+                expected++;
+            }
+        }
+        missing = expected;
+
+        return [repeating, missing];
+    }
+}
